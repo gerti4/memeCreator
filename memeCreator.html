@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Meme Creator</title>
+    <link rel="stylesheet" href="style/creator.css">
+</head>
+
+<body onpageshow="init()">
+    <header>
+        <nav>
+            <div class="logo">LOGO</div>
+            <img class="img-head" src="img/button-main.png">
+            <ul>
+                <li>Gallery</li>
+                <li>About</li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-container">
+        <div class="canvas-container">
+            <canvas id="imgCanvas"></canvas>
+        </div>
+        <img class="bgc-img" src="img/wow.png" alt="">
+        <section class="editor">
+            <section class="txt-creator">
+                <input type="text" name="text" onchange="onChangeTxt(this)">
+                <div class="head-btns">
+                    <button class="btn updown" onclick="selectBox()"><span>⇧</span><span>⇩</span></button>
+                    <button class="btn add" onclick="addTextBox()">✚</button>
+                    <button class="btn delete"><img src="img/delete.png"></button>
+                </div>
+            </section>
+
+            <section class="txt-style">
+                <div class="font">
+                    <button class=" btn increase"><img src="icons/increase.png"></button>
+                    <button class=" btn decrease"><img src="icons/decrease.png"></button>
+                    <button class=" btn txt-left"><img src="icons/text-left.png"></button>
+                    <button class=" btn txt-middle"><img src="icons/text-middle.png"></button>
+                    <button class=" btn txt-right"><img src="icons/text-right.png"></button>
+                </div>
+                <div class="font-style">
+                    <select class="d-block" name="" id="">
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
+                    <button class="some btn d-block">S</button>
+                    <input class="btn color d-block"type="color" name="color">
+                </div>
+            </section>
+            <div class="finish">
+                <button class="btn share">Share</button>
+                <button class="btn download">Download</button>
+            </div>
+        </section>
+        <img class="img-canvas" src="meme-imgs (square)/003.jpg" alt="" srcset="">
+    </main>
+    <script src="js/service.js"></script>
+    <script src="js/creator-controller.js"></script>
+</body>
+
+</html>

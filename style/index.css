@@ -1,0 +1,232 @@
+@font-face {
+    font-family: Poppins;
+    src: url(../fonts/Poppins/Poppins-Regular.ttf);
+}
+
+html {
+    font-family: Poppins;
+}
+
+body {
+    height: 95vh;
+    background-color: #000000d6;
+}
+
+header {
+    background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
+    border-radius: 37px;
+    height: 73px;
+}
+
+nav {
+    height: 100%;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    list-style: none;
+    color: white;
+    padding: 0px 247px;
+}
+
+li {
+    padding-right: 42px;
+}
+
+.search-container {
+    position: relative;
+    margin: 2% 5%;
+    padding-top: 12px;
+}
+
+.search-img {
+    position: absolute;
+    right: 9%;
+    top: 24%;
+    width: 10%;
+}
+
+.search-words {
+    box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.15);
+    border-radius: 23px;
+    background-color: #fefefe;
+    opacity: 0.4;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.img-gallery {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.main-container {
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 100%;
+    border-radius: 20px;
+    background-color: #383b42;
+}
+
+.img-container {
+    margin-top: 6%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 3%;
+}
+
+button {
+    display: none;
+}
+
+.img-head {
+    width: 34px;
+    height: 34px;
+    display: none;
+}
+
+@media(max-width:2000px) {
+    nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 100%;
+        padding-left: 10%;
+    }
+    .logo {
+        /* padding-left: 6%; */
+        color: white;
+    }
+    ul {
+        padding: 0;
+        /* margin-left: 45%; */
+        margin-left: 14%;
+        width: 70%;
+    }
+    li {
+        padding: 10%;
+    }
+    .main-container {
+        margin-top: 2%;
+        overflow: auto;
+        height: 85%;
+    }
+    ::-webkit-scrollbar {
+        width: 13px;
+    }
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+        background-color: #22252c;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
+        border-radius: 10px;
+    }
+    .img-container {
+        margin-bottom: 4%;
+    }
+    .search-contianer {
+        width: 100%;
+        margin: 2% 5%;
+    }
+    .search-img {
+        /* right: 58%;
+        top: 31%;
+        width: 7%; */
+        right: 61%;
+        top: 37%;
+        width: 5%;
+        cursor: pointer;
+    }
+    .search-txt {
+        padding: 3% 3%;
+        width: 36%;
+        font-size: 1.7rem;
+        color: white;
+        background-color: #22252c;
+        border-radius: 29px;
+        border-style: none;
+        outline: none;
+    }
+}
+
+@media (max-width:630px) {
+    body {
+        margin: 0;
+    }
+    header {
+        margin: 0;
+        border-radius: 0;
+    }
+    nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    .logo {
+        width: 118px;
+        height: 32px;
+        color: #ffffff;
+        font-family: Poppins;
+        font-size: 25px;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+    .img-head {
+        display: block;
+    }
+    ul {
+        display: none;
+    }
+    .main-container {
+        height: 1164px;
+        margin: 10px;
+        overflow: initial;
+    }
+    .search-contianer {
+        width: 100%
+    }
+    .search-txt {
+        padding: 5% 7%;
+        width: 86%;
+        background-color: #22252c;
+        border-radius: 29px;
+        border-style: none;
+    }
+    [type="text"] {
+        opacity: 0.38;
+        color: #fefefe;
+        font-family: Poppins;
+        height: 20px;
+        margin-bottom: 2%;
+    }
+    .img-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 6%;
+        row-gap: 2%;
+        background-color: #383b42;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-bottom:80%;
+        border-radius:30px;
+    }
+    .search-img {
+        position: absolute;
+        right: 9%;
+        top: 29%;
+        width: 9%;
+    }
+}
