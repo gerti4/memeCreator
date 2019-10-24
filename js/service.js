@@ -23,7 +23,8 @@ function defaultMeme(imgIdx) {
                 align: 'left',
                 coordX: 0.1,
                 color: 'red',
-                coordY: 20
+                coordY: 20,
+                font: 'IMPACT',
             }
         ]
     }
@@ -128,7 +129,8 @@ function addNewText(txt) {
         size: 20,
         coordX: 0.1,
         color: 'red',
-        coordY: 20
+        coordY: 20,
+        font: 'IMPACT'
 
     }
     saveMemeToStorage(MEME_KEY, gMeme)
@@ -188,4 +190,14 @@ function loadMemeFromStorage(MEME_KEY) {
     return (value) ? value : defaultMeme(0);
 }
 
+
+function changeFont(font){
+    gMeme.txts[gMeme.txtIdx].font = font;
+    saveMemeToStorage(MEME_KEY, gMeme);
+}
+
+function getFont(idx){
+    return gMeme.txts[idx].font;
+
+}
 
