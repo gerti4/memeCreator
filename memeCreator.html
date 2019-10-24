@@ -12,7 +12,7 @@
 <body onpageshow="init()">
     <header>
         <nav>
-            <div class="logo">LOGO</div>
+            <div class="logo" onclick="goToHomePage()">LOGO</div>
             <img class="img-head" src="img/button-main.png">
             <ul>
                 <li>Gallery</li>
@@ -27,30 +27,33 @@
         <img class="bgc-img" src="img/wow.png" alt="">
         <section class="editor">
             <section class="txt-creator">
-                <input type="text" name="text" onchange="onChangeTxt(this)">
+                <input type="text" name="text" onchange="onChangeTxt(this)" autofocus>
                 <div class="head-btns">
-                    <button class="btn updown" onclick="selectBox()"><span>⇧</span><span>⇩</span></button>
-                    <button class="btn add" onclick="addTextBox()">✚</button>
-                    <button class="btn delete"><img src="img/delete.png"></button>
+                    <button class="moveup" onclick="onMoveTxt(this)">down</button>
+                    <button class="moveDown" onclick="onMoveTxt(this)">up</button>
+
+                    <button class="btn updown" onclick="onSelectTxt()"><span>⇧</span><span>⇩</span></button>
+                    <button class="btn add" onclick="openTextBox()">✚</button>
+                    <button class="btn delete"onclick="onDeleteTxt()"><img src="img/delete.png"></button>
                 </div>
             </section>
 
             <section class="txt-style">
                 <div class="font">
-                    <button class=" btn increase"><img src="icons/increase.png"></button>
-                    <button class=" btn decrease"><img src="icons/decrease.png"></button>
-                    <button class=" btn txt-left"><img src="icons/text-left.png"></button>
-                    <button class=" btn txt-middle"><img src="icons/text-middle.png"></button>
-                    <button class=" btn txt-right"><img src="icons/text-right.png"></button>
+                    <button class="btn increase" onclick="onIncreaseFont()"><img src="icons/increase.png"></button>
+                    <button class=" btn decrease" onclick="onDecreaseFont()"><img src="icons/decrease.png"></button>
+                    <button class=" btn txt-left" onclick="onAlignLeft()"><img src="icons/text-left.png"></button>
+                    <button class=" btn txt-middle"onclick="onAlignMiddle()"><img src="icons/text-middle.png"></button>
+                    <button class=" btn txt-right" onclick="onAlignRight()"><img src="icons/text-right.png"></button>
                 </div>
                 <div class="font-style">
-                    <select class="d-block" name="" id="">
+                    <!-- <select class="d-block" name="" id="">
                         <option value=""></option>
                         <option value=""></option>
                         <option value=""></option>
                     </select>
                     <button class="some btn d-block">S</button>
-                    <input class="btn color d-block"type="color" name="color">
+                    <input class="btn color d-block" type="color" name="color"> -->
                 </div>
             </section>
             <div class="finish">

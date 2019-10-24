@@ -13,22 +13,20 @@ var gMeme = loadMemeFromStorage(MEME_KEY);
 
 
 function defaultMeme(imgIdx) {
-    console.log('!!!');
     var meme = {
         imgUrl: gImgs[imgIdx],
         txtIdx: 0,
         txts: [
             {
-                line: 'I never eat Falafel',
+                line: '',
                 size: 20,
-                align: { start: 'left', x: 20 },
+                align: 'left',
+                coordX: 0.1,
                 color: 'red',
-                width: 20 * 20,
+                coordY: 20
             }
         ]
     }
-    console.log(meme);
-
     gMeme = meme;
     saveMemeToStorage(MEME_KEY, gMeme)
 }
@@ -56,16 +54,6 @@ function defaultImgs() {
         'meme-imgs (square)/patrick.jpg',
         'meme-imgs (square)/leo.jpg',
         'meme-imgs (square)/meme1.jpg',
-
-
-
-
-
-
-
-
-
-
     ]
     return imgs;
 }
@@ -75,34 +63,95 @@ function getAllImgs() {
 }
 
 function setMemeImg(imgIdx) {
-    gMeme.imgUrl = gImgs[imgIdx];
-    saveMemeToStorage(MEME_KEY, gMeme);
+    gMeme = defaultMeme(imgIdx)
 }
 
 function getMemeImg() {
     return gMeme.imgUrl;
 }
 
-function getMemeText() {    
-    return gMeme.txts[0].line;
+function getMemeText(idx) {    
+    return gMeme.txts[idx].line;
 }
 
 function changeTxt(txt) {
-    gMeme.txts[0].line = txt;
-    gMeme.txts[0].width = (gMeme.txts[0].size*txt.length) *(5/6);
+    gMeme.txts[gMeme.txtIdx].line = txt;
     saveMemeToStorage(MEME_KEY, gMeme);
 }
 
-function getTxtSize() {
-    return gMeme.txts[0].size;
+function getTxtSize(idx) {
+    return gMeme.txts[idx].size;
 }
 
-function getTxtAlign() {
-    return gMeme.txts[0].align.x;
+function getTxtCoordX(idx) {
+    return gMeme.txts[idx].coordX;
 }
 
 function getTxtWidth(){
-    return gMeme.txts[0].width;
+    return gMeme.txts[gMeme.txtIdx].width;
+}
+
+
+function increaseFont(){
+    gMeme.txts[gMeme.txtIdx].size++;
+}
+function decreaseFont(){
+    gMeme.txts[gMeme.txtIdx].size--;
+
+}
+function deleteText(){    
+    gMeme.txts.splice(gMeme.txtIdx,1);
+    gMeme.txtIdx--;
+    if(gMeme.txtIdx<0) gMeme.txtIdx = 0;
+    saveMemeToStorage(MEME_KEY,gMeme);
+}
+
+function setTxtIdx(){
+    (gMeme.txtIdx<gMeme.txts.length-1)? gMeme.txtIdx++:gMeme.txtIdx=0;
+    saveMemeToStorage(MEME_KEY,gMeme);
+    return gMeme.txtIdx;
+
+}
+
+
+function addNewText(txt){
+    gMeme.txtIdx++;
+    gMeme.txts[gMeme.txtIdx] =  {
+        line: txt,
+        size: 20,
+        coordX: 0.1,
+        color: 'red',
+        coordY: 20
+        
+    }
+    saveMemeToStorage(MEME_KEY,gMeme)
+}
+
+function moveTxt(diff){    
+    gMeme.txts[gMeme.txtIdx].coordY += diff;
+    saveMemeToStorage(MEME_KEY,gMeme)
+
+}
+
+
+
+
+function getMemeCoordY(idx){    
+    return gMeme.txts[idx].coordY;
+}
+
+
+function alignLeft(){
+    gMeme.txts[gMeme.txtIdx].align = 'left'
+    gMeme.txts[gMeme.txtIdx].coordX = 0.05;
+}
+function alignRight(){
+    gMeme.txts[gMeme.txtIdx].align = 'right'
+    gMeme.txts[gMeme.txtIdx].coordX = 0.7;    
+}
+function alignMiddle(){
+    gMeme.txts[gMeme.txtIdx].align = 'middle'
+    gMeme.txts[gMeme.txtIdx].coordX = 0.35;    
 }
 
 
