@@ -27,10 +27,10 @@
         <img class="bgc-img" src="img/wow.png" alt="">
         <section class="editor">
             <section class="txt-creator">
-                <input type="text" name="text" onchange="onChangeTxt(this)" autofocus>
+                <div><input type="text" name="text" onchange="onChangeTxt(this)" autofocus></div>
                 <div class="head-btns">
-                    <button class="moveup" onclick="onMoveTxt(this)">down</button>
-                    <button class="moveDown" onclick="onMoveTxt(this)">up</button>
+                    <button class="btn moveup move" onclick="onMoveTxt(this)">down</button>
+                    <button class="btn moveDown move" onclick="onMoveTxt(this)">up</button>
 
                     <button class="btn updown" onclick="onSelectTxt()"><span>⇧</span><span>⇩</span></button>
                     <button class="btn add" onclick="openTextBox()">✚</button>
@@ -47,13 +47,13 @@
                     <button class=" btn txt-right" onclick="onAlignRight()"><img src="icons/text-right.png"></button>
                 </div>
                 <div class="font-style">
-                    <!-- <select class="d-block" name="" id="">
+                    <select class="d-block" name="" id="">
                         <option value=""></option>
                         <option value=""></option>
                         <option value=""></option>
                     </select>
                     <button class="some btn d-block">S</button>
-                    <input class="btn color d-block" type="color" name="color"> -->
+                    <input class="btn color d-block" type="color" name="color">
                 </div>
             </section>
             <div class="finish">

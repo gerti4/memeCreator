@@ -87,8 +87,8 @@ function getTxtCoordX(idx) {
     return gMeme.txts[idx].coordX;
 }
 
-function getTxtWidth(){
-    return gMeme.txts[gMeme.txtIdx].width;
+function getTxtIdx(){
+    return gMeme.txtIdx;
 }
 
 
@@ -144,14 +144,20 @@ function getMemeCoordY(idx){
 function alignLeft(){
     gMeme.txts[gMeme.txtIdx].align = 'left'
     gMeme.txts[gMeme.txtIdx].coordX = 0.05;
+    saveMemeToStorage(MEME_KEY,gMeme)
+
 }
 function alignRight(){
     gMeme.txts[gMeme.txtIdx].align = 'right'
-    gMeme.txts[gMeme.txtIdx].coordX = 0.7;    
+    gMeme.txts[gMeme.txtIdx].coordX = 0.7; 
+    saveMemeToStorage(MEME_KEY,gMeme)
+   
 }
 function alignMiddle(){
     gMeme.txts[gMeme.txtIdx].align = 'middle'
-    gMeme.txts[gMeme.txtIdx].coordX = 0.35;    
+    gMeme.txts[gMeme.txtIdx].coordX = 0.35;  
+    saveMemeToStorage(MEME_KEY,gMeme)
+  
 }
 
 

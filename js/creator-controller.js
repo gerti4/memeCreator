@@ -42,7 +42,7 @@ function updateImg() {
 
 function onChangeTxt(elTxt) {
     if (gEnteringTxt) {
-        if (elTxt.value === 'Enter new txt') return;
+        if (elTxt.value === '') return;
         else {
             onAddNewTxt(elTxt.value);
             return;
@@ -78,7 +78,8 @@ function onDecreaseFont() {
 function onDeleteTxt() {
     deleteText();
     var elTxt = document.querySelector('input[type="text"]');
-    elTxt.value = '';
+    var txtIdx = getTxtIdx();
+    elTxt.value = getMemeText(txtIdx);
     renderImg();
 }
 
@@ -111,7 +112,8 @@ function onMoveTxt(elMove) {
 
 function openTextBox() {
     var elTxt = document.querySelector('input[type="text"]');
-    elTxt.value = 'Enter new txt';
+    elTxt.value='';
+    elTxt.placeholder = 'Enter new txt';
     gEnteringTxt = true;
     return;
 }
