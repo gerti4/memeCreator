@@ -30,7 +30,9 @@ function renderImg() {
 
     for (var i = 0; i < gMeme.txts.length; i++) {
         var font = getTxtSize(i);
+        var color = getColor(i);
         gCtx.font = `${font}pt IMPACT`;
+        gCtx.fillStyle = color;
         gCtx.fillText(getMemeText(i),(gCanvas.width* getTxtCoordX(i)), getMemeCoordY(i));
     }
 }
@@ -133,6 +135,12 @@ function onAlignMiddle(){
     renderImg();
 }
 
+function onChangeColor(elColor){
+    var color= elColor.value;
+    changeColor(color);
+    renderImg();
+    
+}
 
 
 

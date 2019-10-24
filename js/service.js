@@ -18,7 +18,7 @@ function defaultMeme(imgIdx) {
         txtIdx: 0,
         txts: [
             {
-                line: '',
+                line: ' ',
                 size: 20,
                 align: 'left',
                 coordX: 0.1,
@@ -70,7 +70,7 @@ function getMemeImg() {
     return gMeme.imgUrl;
 }
 
-function getMemeText(idx) {    
+function getMemeText(idx) {
     return gMeme.txts[idx].line;
 }
 
@@ -87,77 +87,94 @@ function getTxtCoordX(idx) {
     return gMeme.txts[idx].coordX;
 }
 
-function getTxtIdx(){
+function getTxtIdx() {
     return gMeme.txtIdx;
 }
 
 
-function increaseFont(){
+function increaseFont() {
     gMeme.txts[gMeme.txtIdx].size++;
 }
-function decreaseFont(){
+function decreaseFont() {
     gMeme.txts[gMeme.txtIdx].size--;
 
 }
-function deleteText(){    
-    gMeme.txts.splice(gMeme.txtIdx,1);
-    gMeme.txtIdx--;
-    if(gMeme.txtIdx<0) gMeme.txtIdx = 0;
-    saveMemeToStorage(MEME_KEY,gMeme);
+function deleteText() {
+    if (gMeme.txts.length === 1) {
+        gMeme.txts[0].line = ' ';
+        saveMemeToStorage(MEME_KEY, gMeme);
+
+    }
+    else {
+        gMeme.txts.splice(gMeme.txtIdx, 1);
+        gMeme.txtIdx--;
+        if (gMeme.txtIdx < 0) gMeme.txtIdx = 0;
+        saveMemeToStorage(MEME_KEY, gMeme);
+    }
 }
 
-function setTxtIdx(){
-    (gMeme.txtIdx<gMeme.txts.length-1)? gMeme.txtIdx++:gMeme.txtIdx=0;
-    saveMemeToStorage(MEME_KEY,gMeme);
+function setTxtIdx() {
+    (gMeme.txtIdx < gMeme.txts.length - 1) ? gMeme.txtIdx++ : gMeme.txtIdx = 0;
+    saveMemeToStorage(MEME_KEY, gMeme);
     return gMeme.txtIdx;
 
 }
 
 
-function addNewText(txt){
+function addNewText(txt) {
     gMeme.txtIdx++;
-    gMeme.txts[gMeme.txtIdx] =  {
+    gMeme.txts[gMeme.txtIdx] = {
         line: txt,
         size: 20,
         coordX: 0.1,
         color: 'red',
         coordY: 20
-        
+
     }
-    saveMemeToStorage(MEME_KEY,gMeme)
+    saveMemeToStorage(MEME_KEY, gMeme)
 }
 
-function moveTxt(diff){    
+function moveTxt(diff) {
     gMeme.txts[gMeme.txtIdx].coordY += diff;
-    saveMemeToStorage(MEME_KEY,gMeme)
+    saveMemeToStorage(MEME_KEY, gMeme)
 
 }
 
 
 
 
-function getMemeCoordY(idx){    
+function getMemeCoordY(idx) {
     return gMeme.txts[idx].coordY;
 }
 
 
-function alignLeft(){
+function alignLeft() {
     gMeme.txts[gMeme.txtIdx].align = 'left'
     gMeme.txts[gMeme.txtIdx].coordX = 0.05;
-    saveMemeToStorage(MEME_KEY,gMeme)
+    saveMemeToStorage(MEME_KEY, gMeme)
 
 }
-function alignRight(){
+function alignRight() {
     gMeme.txts[gMeme.txtIdx].align = 'right'
-    gMeme.txts[gMeme.txtIdx].coordX = 0.7; 
-    saveMemeToStorage(MEME_KEY,gMeme)
-   
+    gMeme.txts[gMeme.txtIdx].coordX = 0.75;
+    saveMemeToStorage(MEME_KEY, gMeme)
+
 }
-function alignMiddle(){
+function alignMiddle() {
     gMeme.txts[gMeme.txtIdx].align = 'middle'
-    gMeme.txts[gMeme.txtIdx].coordX = 0.35;  
-    saveMemeToStorage(MEME_KEY,gMeme)
-  
+    gMeme.txts[gMeme.txtIdx].coordX = 0.4;
+    saveMemeToStorage(MEME_KEY, gMeme)
+}
+
+function getColor(idx) {
+    return gMeme.txts[idx].color;
+
+}
+
+function changeColor(color) {
+    gMeme.txts[gMeme.txtIdx].color = color;
+    saveMemeToStorage(MEME_KEY, gMeme);
+
 }
 
 
