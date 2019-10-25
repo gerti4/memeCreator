@@ -21,10 +21,11 @@ function defaultMeme(imgIdx) {
                 line: ' ',
                 size: 20,
                 align: 'left',
-                coordX: 0.1,
                 color: 'red',
-                coordY: 20,
                 font: 'IMPACT',
+                border: 'black',
+                coordX: 0.1,
+                coordY: 20,
                 pos: { x: 20 , y:30}
             }
         ]
@@ -128,10 +129,11 @@ function addNewText(txt) {
     gMeme.txts[gMeme.txtIdx] = {
         line: txt,
         size: 20,
-        coordX: 0.1,
         color: 'red',
-        coordY: 20,
         font: 'IMPACT',
+        border: 'black',
+        coordX: 0.1,
+        coordY: 20,
         pos: {x:20 , y:30 }
     }
     saveMemeToStorage(MEME_KEY, gMeme)
@@ -143,6 +145,15 @@ function moveTxt(diff) {
 
 }
 
+
+function setTxtBorder(color){
+    gMeme.txts[gMeme.txtIdx].border = color;
+    saveMemeToStorage(MEME_KEY, gMeme);
+}
+
+function getTxtBorder(idx){
+    return gMeme.txts[idx].border;
+}
 
 function getMemeTxts(){
     return gMeme.txts;

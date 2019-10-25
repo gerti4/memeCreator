@@ -34,7 +34,10 @@ function renderImg() {
         var font = getFont(i);
         gCtx.font = `${fontSize}pt ${font}`;
         gCtx.fillStyle = color;
+        gCtx.lineWidth = 2;
         gCtx.fillText(getMemeText(i), getTextPosX(i), getTextPosY(i));
+        gCtx.strokeStyle = getTxtBorder(i);
+        gCtx.strokeText(getMemeText(i), getTextPosX(i), getTextPosY(i));
     }
 }
 
@@ -149,7 +152,11 @@ function onChangeFont(elFont) {
 }
 
 
-
+function onChangeTxtBorder(elTxtBorder){
+    var borderColor = elTxtBorder.value;
+    setTxtBorder(borderColor);
+    renderImg();
+}
 
 
 

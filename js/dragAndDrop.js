@@ -4,6 +4,9 @@
 var gTxtIdx;
 var gIsTxtMoving = false;
 
+
+
+
 function selectText(ev) {
     ev.preventDefault();
     var coordX = ev.offsetX;
@@ -48,4 +51,10 @@ function setTextPos() {
     gIsTxtMoving = false;
     document.querySelector('input[type="text"]').placeholder = ' ';
     document.querySelector('#imgCanvas').style.cursor='grab'
+}
+
+
+function foo(){
+    console.log('!!!!');
+    
 }
