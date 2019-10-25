@@ -103,6 +103,7 @@ button {
 #imgCanvas {
     border-radius: 30px;
     width: 100%;
+    cursor: grab;
 }
 
 .editor {
@@ -172,6 +173,8 @@ a{
     width:40px;
     box-shadow: -1px 2px 3px #121010;
 }
+
+
 a:visited{
     color: white;
     text-decoration: none;

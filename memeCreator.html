@@ -22,7 +22,7 @@
     </header>
     <main class="main-container">
         <div class="canvas-container">
-            <canvas id="imgCanvas"></canvas>
+            <canvas id="imgCanvas" ontouchstart="selectText(event)" ontouchmove="moveText(event)" ontouchend="setTextPos()" onmousedown="selectText(event)" onmousemove="moveText(event)" onmouseup="setTextPos()"></canvas>
         </div>
         <img class="bgc-img" src="img/wow.png" alt="">
         <section class="editor">

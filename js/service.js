@@ -25,6 +25,7 @@ function defaultMeme(imgIdx) {
                 color: 'red',
                 coordY: 20,
                 font: 'IMPACT',
+                pos: { x: 20 , y:30}
             }
         ]
     }
@@ -130,20 +131,22 @@ function addNewText(txt) {
         coordX: 0.1,
         color: 'red',
         coordY: 20,
-        font: 'IMPACT'
-
+        font: 'IMPACT',
+        pos: {x:20 , y:30 }
     }
     saveMemeToStorage(MEME_KEY, gMeme)
 }
 
 function moveTxt(diff) {
-    gMeme.txts[gMeme.txtIdx].coordY += diff;
+    gMeme.txts[gMeme.txtIdx].coordY += (diff*5);
     saveMemeToStorage(MEME_KEY, gMeme)
 
 }
 
 
-
+function getMemeTxts(){
+    return gMeme.txts;
+}
 
 function getMemeCoordY(idx) {
     return gMeme.txts[idx].coordY;
@@ -179,6 +182,10 @@ function changeColor(color) {
 
 }
 
+function getTxtPos(idx){
+    return gMeme.txts[idx].pos;
+}
+
 
 function saveMemeToStorage(MEME_KEY, gMeme) {
     localStorage.setItem(MEME_KEY, JSON.stringify(gMeme));
@@ -198,6 +205,19 @@ function changeFont(font){
 
 function getFont(idx){
     return gMeme.txts[idx].font;
+}
 
+function updateTextPos(idx,diffX,diffY){
+    var pos = getTxtPos(idx);
+    pos.x += diffX;
+    pos.y += diffY;
+}
+
+function getTextPosX(idx){    
+    return gMeme.txts[idx].pos.x;
+}
+
+function getTextPosY(idx){
+    return gMeme.txts[idx].pos.y;
 }
 
