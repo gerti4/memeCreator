@@ -5,7 +5,7 @@ function getHeightCanvas(){
     return document.querySelector('.canvas-container').offsetHeight;
 }
 
-function getWidthCanvas(){
+function getWidthCanvas(){    
     return document.querySelector('.canvas-container').offsetWidth;
 }
 

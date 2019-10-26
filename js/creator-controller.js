@@ -11,8 +11,9 @@ var gIsTxtSelcted = false;
 init();
 
 function init() {
-    resizeCanvas();
+    defaultMeme();
     updateImg();
+    resizeCanvas();
     renderImg();
 }
 
@@ -26,7 +27,7 @@ function resizeCanvas() {
 }
 
 function renderImg() {
-    var img = document.querySelector('.img-canvas');
+    var img = document.querySelector('.img-canvas');    
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
 
 
@@ -53,7 +54,7 @@ function renderImg() {
 
 function updateImg() {
     var elImg = document.querySelector('.img-canvas');
-    elImg.src = getMemeImg();
+    elImg.src = getMemeImg();    
 }
 
 function onChangeTxt(elTxt) {

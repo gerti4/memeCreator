@@ -4,17 +4,18 @@
 
 
 const MEME_KEY = 'meme';
+const IMG_KEY = 'img';
 
 var gImgs = defaultImgs();
-var gMeme = loadMemeFromStorage(MEME_KEY);
+var gMeme ;
+var gImgSrc;
 
 
 
 
-
-function defaultMeme(imgIdx) {
+function defaultMeme() {
     var meme = {
-        imgUrl: gImgs[imgIdx],
+        imgUrl: loadImgFromStorage(IMG_KEY),
         txtIdx: 1,
         txts: [
             {
@@ -73,11 +74,12 @@ function getAllImgs() {
 }
 
 function setMemeImg(imgIdx) {
-    gMeme = defaultMeme(imgIdx)
+    gImgSrc = gImgs[imgIdx]
+    saveImgToStorage(IMG_KEY, gImgSrc)
 }
 
 function getMemeImg() {
-    return gMeme.imgUrl;
+    return loadImgFromStorage(IMG_KEY);
 }
 
 function getMemeText(idx) {
@@ -209,6 +211,17 @@ function loadMemeFromStorage(MEME_KEY) {
     var str = localStorage.getItem(MEME_KEY);
     var value = JSON.parse(str);
     return (value) ? value : defaultMeme(0);
+}
+
+function saveImgToStorage(IMG_KEY, gImgSrc) {
+    localStorage.setItem(IMG_KEY, JSON.stringify(gImgSrc));
+}
+
+function loadImgFromStorage(IMG_KEY) {
+    var str = localStorage.getItem(IMG_KEY);
+    var value = JSON.parse(str);
+    
+    return (value) ? value : 'meme-imgs (square)/meme1.jpg';
 }
 
 

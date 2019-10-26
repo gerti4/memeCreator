@@ -1,7 +1,7 @@
 'use strict'
 
+var gImgIdx;
 
-renderImgs();
 
 function renderImgs() {
     var imgs = getAllImgs();
@@ -17,5 +17,7 @@ function renderImgs() {
 
 function onMemeImg(imgIdx) {
     setMemeImg(imgIdx);
+    
     window.location = "memeCreator.html";
+
 }
