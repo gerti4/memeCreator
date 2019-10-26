@@ -305,7 +305,7 @@ select {
         top: 13.5%;
     }
     .canvas-container {
-        margin-top: 5%;
+        margin-top: 3%;
         margin-left: 5%;
         margin-right: 5%;
         width: 90%;
@@ -317,8 +317,8 @@ select {
     .editor {
         opacity: 1;
         border-radius: 10px;
-        margin: 2% 6%;
-        padding-top: 1.5%;
+        margin: 0 6%;
+        padding-top: 2.5%;
         box-shadow: 2px -6px 20px 0px #716f6f;
         background-color: #36373ccc;
         /* padding-bottom: 3%; */
@@ -344,14 +344,14 @@ select {
     }
     .txt-creator {
         width: 80%;
-        height: 30%;
+        height: 20%;
     }
     input[type="text"] {
-        margin: 4% 0;
-        padding:10px 20px;
+        margin: 3% 0;
+        padding:5px 20px;
     }
     .finish {
-        margin-top: 1%;
+        margin-bottom: 2%;
     }
     .head-btns {
         padding-bottom: 0.5%;
@@ -374,7 +374,7 @@ select {
     }
 }
 
-@media(max-width:285px) {
+@media(max-width:320px) {
     html {
         font-size: 0.8rem;
     }

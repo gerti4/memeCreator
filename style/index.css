@@ -114,6 +114,10 @@ li {
     border-radius: 20px;
     cursor: pointer;
 }
+.img-gallery:hover{
+    animation-name: bounce;
+    animation-duration: 1s;
+}
 
 
 .img-container {
