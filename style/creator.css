@@ -49,6 +49,13 @@ ul {
 
 li {
     padding: 10%;
+    transition: 1s;
+    cursor: pointer;
+}
+
+li:hover {
+    color: #752b2b;
+    transition: 1s;
 }
 
 img {
@@ -124,7 +131,6 @@ button {
     box-shadow: 0 0 8px #716f6f;
     justify-content: initial;
 }
-
 
 .img-canvas {
     display: none;
@@ -203,7 +209,6 @@ a:visited {
     background-color: #ff5454;
 }
 
-
 .txt-style {
     background-color: #19a59f;
     width: 80%;
@@ -262,11 +267,19 @@ select {
 .logo {
     color: white;
     cursor: pointer;
+    transition: 1s;
 }
-.moveup{
+
+.logo:hover {
+    color: #0b0559;
+    transition: 1s;
+}
+
+.moveup {
     background-color: #f5f4d1;
 }
-.movedown{
+
+.movedown {
     background-color: #e1c9fd;
 }
 
@@ -348,7 +361,7 @@ select {
     }
     input[type="text"] {
         margin: 3% 0;
-        padding:5px 20px;
+        padding: 5px 20px;
     }
     .finish {
         margin-bottom: 2%;
@@ -363,7 +376,7 @@ select {
         height: 20px;
         padding: 10px;
     }
-    .btn-link{
+    .btn-link {
         font-size: 14px;
     }
     .w-4 {

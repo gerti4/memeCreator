@@ -7,7 +7,7 @@ const MEME_KEY = 'meme';
 const IMG_KEY = 'img';
 
 var gImgs = defaultImgs();
-var gMeme ;
+var gMeme;
 var gImgSrc;
 
 
@@ -20,21 +20,21 @@ function defaultMeme() {
         txts: [
             {
                 line: 'Bye',
-                size: 30,
+                size: 35,
                 align: 'center',
                 color: 'white',
                 font: 'IMPACT',
                 border: 'black',
-                pos: { x: getWidthCanvas()/2, y: getHeightCanvas()-50 }
+                pos: { x: getWidthCanvas() / 2, y: getHeightCanvas() - 50 }
             },
             {
                 line: 'Hey',
-                size: 30,
+                size: 35,
                 align: 'center',
                 color: 'white',
                 font: 'IMPACT',
                 border: 'black',
-                pos: { x: getWidthCanvas()/2, y: getTopCanvas() }
+                pos: { x: getWidthCanvas() / 2, y: getTopCanvas() }
             },
         ]
     }
@@ -45,36 +45,49 @@ function defaultMeme() {
 
 function defaultImgs() {
     var imgs = [
-        'meme-imgs (square)/2.jpg',
-        'meme-imgs (square)/003.jpg',
-        'meme-imgs (square)/004.jpg',
-        'meme-imgs (square)/005.jpg',
-        'meme-imgs (square)/006.jpg',
-        'meme-imgs (square)/8.jpg',
-        'meme-imgs (square)/9.jpg',
-        'meme-imgs (square)/12.jpg',
-        'meme-imgs (square)/19.jpg',
-        'meme-imgs (square)/5.jpg',
-        'meme-imgs (square)/img2.jpg',
-        'meme-imgs (square)/img4.jpg',
-        'meme-imgs (square)/img5.jpg',
-        'meme-imgs (square)/img6.jpg',
-        'meme-imgs (square)/img11.jpg',
-        'meme-imgs (square)/img12.jpg',
-        'meme-imgs (square)/putin.jpg',
-        'meme-imgs (square)/patrick.jpg',
-        'meme-imgs (square)/leo.jpg',
-        'meme-imgs (square)/meme1.jpg',
+        { id: 1, url: 'meme-imgs (square)/2.jpg', keyWords: ['happy'] },
+        { id: 2, url: 'meme-imgs (square)/003.jpg', keyWords: ['presidant', 'funny'] },
+        { id: 3, url: 'meme-imgs (square)/004.jpg', keyWords: ['animal', 'cute'] },
+        { id: 4, url: 'meme-imgs (square)/005.jpg', keyWords: ['cute'] },
+        { id: 5, url: 'meme-imgs (square)/006.jpg', keyWords: ['cute', 'animal'] },
+        { id: 6, url: 'meme-imgs (square)/8.jpg', keyWords: ['happy', 'people'] },
+        { id: 7, url: 'meme-imgs (square)/9.jpg', keyWords: ['cute', 'happy', 'funny'] },
+        { id: 8, url: 'meme-imgs (square)/12.jpg', keyWords: ['funny', 'people'] },
+        { id: 9, url: 'meme-imgs (square)/19.jpg', keyWords: ['people'] },
+        { id: 10, url: 'meme-imgs (square)/5.jpg', keyWords: ['cute', 'funny'] },
+        { id: 11, url: 'meme-imgs (square)/img2.jpg', keyWords: ['funny', 'people'] },
+        { id: 12, url: 'meme-imgs (square)/img4.jpg', keyWords: ['funny', 'presidant'] },
+        { id: 13, url: 'meme-imgs (square)/img5.jpg', keyWords: ['cute', 'funny'] },
+        { id: 14, url: 'meme-imgs (square)/img6.jpg', keyWords: ['animal'] },
+        { id: 15, url: 'meme-imgs (square)/img11.jpg', keyWords: ['presidant', 'funny'] },
+        { id: 16, url: 'meme-imgs (square)/img12.jpg', keyWords: ['funny', 'akward', 'people'] },
+        { id: 17, url: 'meme-imgs (square)/putin.jpg', keyWords: ['people', 'presidant'] },
+        { id: 18, url: 'meme-imgs (square)/patrick.jpg', keyWords: ['funny', 'people'] },
+        { id: 19, url: 'meme-imgs (square)/leo.jpg', keyWords: ['people'] },
+        { id: 20, url: 'meme-imgs (square)/meme1.jpg', keyWords: ['people', 'funny'] },
     ]
     return imgs;
 }
 
-function getAllImgs() {
-    return gImgs;
+function getImgs(keySearch) {
+    var imgs = []
+    if (!keySearch) return gImgs;
+    gImgs.filter(img => {
+        return (img.keyWords.forEach(word => {
+            if (word === keySearch)
+                imgs.push(img);
+
+        }))
+    })
+    return imgs;
 }
 
 function setMemeImg(imgIdx) {
-    gImgSrc = gImgs[imgIdx]
+    gImgs.forEach(element => {
+        if (element.id === imgIdx)
+            gImgSrc = element.url
+
+    })
     saveImgToStorage(IMG_KEY, gImgSrc)
 }
 
@@ -137,12 +150,12 @@ function addNewText(txt) {
     gMeme.txtIdx++;
     gMeme.txts[gMeme.txtIdx] = {
         line: txt,
-        size: 20,
+        size: 35,
         align: 'center',
         color: 'white',
         font: 'IMPACT',
         border: 'black',
-        pos: { x: getWidthCanvas()/2 , y: getHeightCanvas()/2 }
+        pos: { x: getWidthCanvas() / 2, y: getHeightCanvas() / 2 }
     }
     saveMemeToStorage(MEME_KEY, gMeme)
 }
@@ -174,11 +187,11 @@ function getMemeCoordY(idx) {
 
 function alignTxt(position) {
     gMeme.txts[gMeme.txtIdx].align = position;
-    gMeme.txts[gMeme.txtIdx].pos.x = getWidthCanvas()/2;
+    gMeme.txts[gMeme.txtIdx].pos.x = getWidthCanvas() / 2;
     saveMemeToStorage(MEME_KEY, gMeme);
 }
 
-function removeAlignTxt(idx){    
+function removeAlignTxt(idx) {
     gMeme.txts[idx].align = 'no-align';
     saveMemeToStorage(MEME_KEY, gMeme);
 }
@@ -220,7 +233,7 @@ function saveImgToStorage(IMG_KEY, gImgSrc) {
 function loadImgFromStorage(IMG_KEY) {
     var str = localStorage.getItem(IMG_KEY);
     var value = JSON.parse(str);
-    
+
     return (value) ? value : 'meme-imgs (square)/meme1.jpg';
 }
 
