@@ -15,19 +15,26 @@ var gMeme = loadMemeFromStorage(MEME_KEY);
 function defaultMeme(imgIdx) {
     var meme = {
         imgUrl: gImgs[imgIdx],
-        txtIdx: 0,
+        txtIdx: 1,
         txts: [
             {
-                line: ' ',
-                size: 20,
-                align: 'left',
-                color: 'red',
+                line: 'Bye',
+                size: 30,
+                align: 'center',
+                color: 'white',
                 font: 'IMPACT',
                 border: 'black',
-                coordX: 0.1,
-                coordY: 20,
-                pos: { x: 20 , y:30}
-            }
+                pos: { x: getWidthCanvas()/2, y: getHeightCanvas()-50 }
+            },
+            {
+                line: 'Hey',
+                size: 30,
+                align: 'center',
+                color: 'white',
+                font: 'IMPACT',
+                border: 'black',
+                pos: { x: getWidthCanvas()/2, y: getTopCanvas() }
+            },
         ]
     }
     gMeme = meme;
@@ -129,33 +136,32 @@ function addNewText(txt) {
     gMeme.txts[gMeme.txtIdx] = {
         line: txt,
         size: 20,
-        color: 'red',
+        align: 'center',
+        color: 'white',
         font: 'IMPACT',
         border: 'black',
-        coordX: 0.1,
-        coordY: 20,
-        pos: {x:20 , y:30 }
+        pos: { x: getWidthCanvas()/2 , y: getHeightCanvas()/2 }
     }
     saveMemeToStorage(MEME_KEY, gMeme)
 }
 
 function moveTxt(diff) {
-    gMeme.txts[gMeme.txtIdx].coordY += (diff*5);
+    gMeme.txts[gMeme.txtIdx].pos.y += (diff * 5);
     saveMemeToStorage(MEME_KEY, gMeme)
 
 }
 
 
-function setTxtBorder(color){
+function setTxtBorder(color) {
     gMeme.txts[gMeme.txtIdx].border = color;
     saveMemeToStorage(MEME_KEY, gMeme);
 }
 
-function getTxtBorder(idx){
+function getTxtBorder(idx) {
     return gMeme.txts[idx].border;
 }
 
-function getMemeTxts(){
+function getMemeTxts() {
     return gMeme.txts;
 }
 
@@ -164,22 +170,19 @@ function getMemeCoordY(idx) {
 }
 
 
-function alignLeft() {
-    gMeme.txts[gMeme.txtIdx].align = 'left'
-    gMeme.txts[gMeme.txtIdx].coordX = 0.05;
-    saveMemeToStorage(MEME_KEY, gMeme)
-
+function alignTxt(position) {
+    gMeme.txts[gMeme.txtIdx].align = position;
+    gMeme.txts[gMeme.txtIdx].pos.x = getWidthCanvas()/2;
+    saveMemeToStorage(MEME_KEY, gMeme);
 }
-function alignRight() {
-    gMeme.txts[gMeme.txtIdx].align = 'right'
-    gMeme.txts[gMeme.txtIdx].coordX = 0.75;
-    saveMemeToStorage(MEME_KEY, gMeme)
 
+function removeAlignTxt(idx){    
+    gMeme.txts[idx].align = 'no-align';
+    saveMemeToStorage(MEME_KEY, gMeme);
 }
-function alignMiddle() {
-    gMeme.txts[gMeme.txtIdx].align = 'middle'
-    gMeme.txts[gMeme.txtIdx].coordX = 0.4;
-    saveMemeToStorage(MEME_KEY, gMeme)
+
+function getTxtAlign(idx) {
+    return gMeme.txts[idx].align;
 }
 
 function getColor(idx) {
@@ -193,7 +196,7 @@ function changeColor(color) {
 
 }
 
-function getTxtPos(idx){
+function getTxtPos(idx) {
     return gMeme.txts[idx].pos;
 }
 
@@ -209,26 +212,26 @@ function loadMemeFromStorage(MEME_KEY) {
 }
 
 
-function changeFont(font){
+function changeFont(font) {
     gMeme.txts[gMeme.txtIdx].font = font;
     saveMemeToStorage(MEME_KEY, gMeme);
 }
 
-function getFont(idx){
+function getFont(idx) {
     return gMeme.txts[idx].font;
 }
 
-function updateTextPos(idx,diffX,diffY){
+function updateTextPos(idx, diffX, diffY) {
     var pos = getTxtPos(idx);
     pos.x += diffX;
     pos.y += diffY;
 }
 
-function getTextPosX(idx){    
+function getTextPosX(idx) {
     return gMeme.txts[idx].pos.x;
 }
 
-function getTextPosY(idx){
+function getTextPosY(idx) {
     return gMeme.txts[idx].pos.y;
 }
 

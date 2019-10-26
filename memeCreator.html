@@ -48,11 +48,11 @@
                             src="icons/increase.png"></button>
                     <button class=" btn decrease" onclick="onDecreaseFont()" title="decrease text"><img
                             src="icons/decrease.png"></button>
-                    <button class=" btn txt-left" onclick="onAlignLeft()" title="move text left"><img
+                    <button class=" btn txt-left" onclick="onAlignTxt(this)" title="move text right"><img
                             src="icons/text-left.png"></button>
-                    <button class=" btn txt-middle" onclick="onAlignMiddle()" title="move text to center"><img
+                    <button class=" btn txt-middle" onclick="onAlignTxt(this)" title="move text to center"><img
                             src="icons/text-middle.png"></button>
-                    <button class=" btn txt-right" onclick="onAlignRight()" title="move text right"><img
+                    <button class=" btn txt-right" onclick="onAlignTxt(this)" title="move text left"><img
                             src="icons/text-right.png"></button>
                 </div>
                 <div class="font-style">
@@ -78,6 +78,7 @@
         </section>
         <img class="img-canvas" src="meme-imgs (square)/003.jpg" alt="" srcset="">
     </main>
+    <script src="js/utils.js"></script>
     <script src="js/service.js"></script>
     <script src="js/creator-controller.js"></script>
     <script src="js/dragAndDrop.js"></script>
