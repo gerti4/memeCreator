@@ -10,7 +10,6 @@ var gEvType;
 
 function selectText(ev) {
     gEvType = ev.type;
-    console.log(ev.touches[0].clientX);
 
     ev.preventDefault();
     var coordX;
