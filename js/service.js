@@ -100,7 +100,12 @@ function getMemeText(idx) {
 }
 
 function changeTxt(txt) {
-    gMeme.txts[gMeme.txtIdx].line = txt;
+    if (txt === 'Backspace'){
+        if(gMeme.txts[gMeme.txtIdx].line){
+            gMeme.txts[gMeme.txtIdx].line = gMeme.txts[gMeme.txtIdx].line.substring(0,gMeme.txts[gMeme.txtIdx].line.length-1);            
+        }
+    }
+    else gMeme.txts[gMeme.txtIdx].line += txt;    
     saveMemeToStorage(MEME_KEY, gMeme);
 }
 
@@ -144,6 +149,9 @@ function setTxtIdx() {
     return gMeme.txtIdx;
 
 }
+
+
+
 
 
 function addNewText(txt) {

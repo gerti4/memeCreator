@@ -4,7 +4,7 @@ var gCanvas;
 var gCtx;
 var gEnteringTxt = false;
 var gIsTxtSelcted = false;
-
+var gIsTextRemarked = false;
 
 
 
@@ -26,9 +26,11 @@ function resizeCanvas() {
     gCtx = gCanvas.getContext("2d");
 }
 
+
 function renderImg() {
-    var img = document.querySelector('.img-canvas');    
+    var img = document.querySelector('.img-canvas');
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
+    renderPlaceHolder();
 
 
     for (var i = 0; i < gMeme.txts.length; i++) {
@@ -39,11 +41,11 @@ function renderImg() {
         gCtx.fillStyle = color;
         gCtx.lineWidth = 2;
         gCtx.strokeStyle = getTxtBorder(i);
-        if(getTxtAlign(i) === 'no-align'){
+        if (getTxtAlign(i) === 'no-align') {
             gCtx.fillText(getMemeText(i), getTextPosX(i), getTextPosY(i));
             gCtx.strokeText(getMemeText(i), getTextPosX(i), getTextPosY(i));
         }
-        else{
+        else {
             gCtx.textAlign = getTxtAlign(i);
             gCtx.fillText(getMemeText(i), gCanvas.width / 2, getTextPosY(i));
             gCtx.strokeText(getMemeText(i), gCanvas.width / 2, getTextPosY(i));
@@ -54,26 +56,31 @@ function renderImg() {
 
 function updateImg() {
     var elImg = document.querySelector('.img-canvas');
-    elImg.src = getMemeImg();    
+    elImg.src = getMemeImg();
 }
 
-function onChangeTxt(elTxt) {
+
+function renderPlaceHolder() {
+    var elTxt = document.querySelector('input[type="text"]');
+    var txtIdx = getTxtIdx();
+    var txt = getMemeText(txtIdx);
+    elTxt.placeholder = txt;
+}
+
+function onChangeTxt(ev) {
+    if(ev.key.length > 2 && ev.key!=='Backspace') return;
     if (gEnteringTxt) {
-        if (elTxt.value === '') return;
-        else {
-            onAddNewTxt(elTxt.value);
+            onAddNewTxt(ev.key);
             gEnteringTxt = false;
             return;
-        }
     }
-    var txt = elTxt.value;
-    elTxt.value = '';
-    changeTxt(txt);
+    changeTxt(ev.key);
     renderImg();
 }
 
 
 function onSelectTxt() {
+    if(gIsTextRemarked) return;
     gIsTxtSelcted = true;
     gEnteringTxt = false;
     var txtIdx = setTxtIdx();
@@ -85,14 +92,12 @@ function onSelectTxt() {
     gCtx.fillRect(0, getTextPosY(txtIdx) - 50, gCanvas.width, 70);
     gCtx.strokeStyle = 'black';
     gCtx.strokeRect(0, getTextPosY(txtIdx) - 50, gCanvas.width, 70);
+    gIsTextRemarked = true;
     setTimeout(() => {
         renderImg();
+        gIsTextRemarked = false;
     }, 1500);
-
-
-
-
-
+    
 }
 
 
@@ -140,9 +145,10 @@ function onMoveTxt(elMove) {
 
 
 function openTextBox() {
+    
     var elTxt = document.querySelector('input[type="text"]');
-    elTxt.value = '';
-    elTxt.placeholder = 'Enter new txt';
+    elTxt.value = ' ';
+    // elTxt.placeholder = 'Enter new txt';
     gEnteringTxt = true;
     return;
 }
