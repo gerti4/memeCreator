@@ -103,6 +103,8 @@ function changeTxt(txt , removeLetter) {
     if(removeLetter) gMeme.txts[gMeme.txtIdx].line = txt
     else gMeme.txts[gMeme.txtIdx].line += txt;   
     saveMemeToStorage(MEME_KEY, gMeme);
+    console.log(gMeme.txts[gMeme.txtIdx].line);
+    
 }
 
 function getTxtSize(idx) {

@@ -71,14 +71,14 @@ function onChangeTxt(ev) {
     var txt = ev.data;
     var isBackSpace = false;
     if(!txt){
-        if (ev.inputType!=='deleteContentBackward') return;
-        else{
+        if (ev.inputType==='deleteContentBackward'){
             txt = getMemeText(getTxtIdx());            
             if(txt){
                 txt = txt.substring(0,txt.length-1);
                 isBackSpace = true;
             }
-        }
+        } 
+        else return;
     }
     if (gEnteringTxt) {
             onAddNewTxt(txt);
