@@ -64,17 +64,29 @@ function renderPlaceHolder() {
     var elTxt = document.querySelector('input[type="text"]');
     var txtIdx = getTxtIdx();
     var txt = getMemeText(txtIdx);
-    elTxt.placeholder = txt;
+    elTxt.value = txt;
 }
 
-function onChangeTxt(ev) {
-    if(ev.key.length > 2 && ev.key!=='Backspace') return;
+function onChangeTxt(ev) {    
+    var txt = ev.data;
+    var isBackSpace = false;
+    if(!txt){
+        if (ev.inputType!=='deleteContentBackward') return;
+        else{
+            txt = getMemeText(getTxtIdx());            
+            if(txt){
+                txt = txt.substring(0,txt.length-1);
+                isBackSpace = true;
+            }
+        }
+    }
     if (gEnteringTxt) {
-            onAddNewTxt(ev.key);
+            onAddNewTxt(txt);
             gEnteringTxt = false;
             return;
     }
-    changeTxt(ev.key);
+
+    changeTxt(txt,isBackSpace);
     renderImg();
 }
 

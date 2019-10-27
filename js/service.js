@@ -99,13 +99,9 @@ function getMemeText(idx) {
     return gMeme.txts[idx].line;
 }
 
-function changeTxt(txt) {
-    if (txt === 'Backspace'){
-        if(gMeme.txts[gMeme.txtIdx].line){
-            gMeme.txts[gMeme.txtIdx].line = gMeme.txts[gMeme.txtIdx].line.substring(0,gMeme.txts[gMeme.txtIdx].line.length-1);            
-        }
-    }
-    else gMeme.txts[gMeme.txtIdx].line += txt;    
+function changeTxt(txt , removeLetter) {
+    if(removeLetter) gMeme.txts[gMeme.txtIdx].line = txt
+    else gMeme.txts[gMeme.txtIdx].line += txt;   
     saveMemeToStorage(MEME_KEY, gMeme);
 }
 
